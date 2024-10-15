@@ -7,17 +7,9 @@ services:
     stdin_open: true
     ports:
       - "25565:25565"
+      - "25575:25575"
     restart: unless-stopped
     volumes:
-      - /var/www/minecraft-server/volumens/minecraft-server-docker/data:/data
+      - ./data:/data
+      - ./data/scripts:/scripts
     container_name: minecraft-server
-
-  # cloudflared:
-  #   image: cloudflare/cloudflared:latest
-  #   env_file:
-  #     - .env
-  #   restart: always
-  #   command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
-  #   volumes:
-  #     - /var/www/minecraft-server/volumens/minecraft-server-cloudflare/config:/etc/cloudflared
-  #   container_name: minecraft-server-cloudflaredhttps://www.youtube.com/watch?v=Q7nLidaRRF8
